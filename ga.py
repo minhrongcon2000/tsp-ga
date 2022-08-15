@@ -185,14 +185,22 @@ class TSPGA:
         ys = self.country.cities[best_individual + [best_individual[0]], 1]
         
         self.path_ax.clear()
-        self.path_ax.scatter(xs, ys)
-        self.path_ax.plot(xs, ys)
+        self.path_ax.set_title("TSP solution")
+        self.path_ax.scatter(xs, ys, label="city", color="blue")
+        self.path_ax.plot(xs, ys, label="path", color="red")
+        self.path_ax.legend()
         
         self.scores.append(abs(score))
         self.score_ax.clear()
         self.score_ax.plot(self.scores)
+        self.score_ax.set_xlabel("Iteration")
+        self.score_ax.set_ylabel("Cost")
+        self.score_ax.set_title("GA Learning curve")
+        
         if self.debug:
-            self.score_ax.hlines(self.ideal_distance, xmin=0, xmax=t + 1)
+            self.score_ax.hlines(self.ideal_distance, xmin=0, xmax=t + 1, color="black", label="optimal solution")
+            self.score_ax.legend()
+        self.fig.tight_layout()
         if self.debug:
             print("Iteration {}: current path {}, shortest path {}".format(
                 t + 1, 
