@@ -18,3 +18,5 @@ _Note_: Please don't try to use debug mode for large city. It's painfully slow.
 ## Results
 
 ![result.gif](./result.gif)
+
+_Note_: The optimal path is calculated using ``python-tsp`` library.
